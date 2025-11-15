@@ -1,0 +1,21 @@
+import sqlite3
+
+connection = sqlite3.connect('restaurant.db')
+cursor = connection.cursor()
+
+# USERS TABLE
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    password TEXT,
+    email TEXT,
+    visits INTEGER DEFAULT 0,
+    wallet REAL DEFAULT 1000
+)
+''')
+
+connection.commit()
+connection.close()
+print("✅ Database created successfully!")
+ 
